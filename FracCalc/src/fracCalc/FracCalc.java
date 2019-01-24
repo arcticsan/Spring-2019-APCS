@@ -29,6 +29,8 @@ public class FracCalc {
         String operator = stringArr[1];
         Fraction operand1 = new Fraction(stringArr[0]);
         Fraction operand2 = new Fraction(stringArr[2]);
+        operand1.printFields();
+        operand2.printFields();
         return "";
     }
 
