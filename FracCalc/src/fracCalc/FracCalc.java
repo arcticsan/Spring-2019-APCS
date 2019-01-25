@@ -25,10 +25,10 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
-    	String[] stringArr = input.split(" "); 
-        String operator = stringArr[1];
-        Fraction operand1 = new Fraction(stringArr[0]);
-        Fraction operand2 = new Fraction(stringArr[2]);
+    	String[] splitEqua = input.split(" "); 
+        String operator = splitEqua[1];
+        Fraction operand1 = new Fraction(splitEqua[0]);
+        Fraction operand2 = new Fraction(splitEqua[2]);
         operand1.printFields();
         operand2.printFields();
         return "";
