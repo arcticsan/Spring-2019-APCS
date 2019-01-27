@@ -27,11 +27,18 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
     	String[] splitEqua = input.split(" "); 
         String operator = splitEqua[1];
+        System.out.println(Arrays.toString(splitEqua));
         Fraction operand1 = new Fraction(splitEqua[0]);
         Fraction operand2 = new Fraction(splitEqua[2]);
+        Fraction answer = new Fraction();
         operand1.printFields();
         operand2.printFields();
-        return "";
+        answer = answer.doMath(operator, operand1, operand2);
+        answer.negativeChecker();
+        answer.toMixed();
+        answer.printFields();
+        System.out.println("Answer: " + answer.getFracStr());
+        return answer.getFracStr();
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
