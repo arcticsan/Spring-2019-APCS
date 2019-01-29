@@ -1,3 +1,8 @@
+/*Bryan Chan
+ *28 Jan 2019
+ * Fraction Calculator using Object Class Fraction
+ * V 1.0
+ */
 package fracCalc;
 import java.util.*;
 public class FracCalc {
@@ -13,15 +18,6 @@ public class FracCalc {
     		fracString = userInput.nextLine();
     	}
     }
-    
-    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
-    // This function takes a String 'input' and produces the result
-    //
-    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
-    //      e.g. input ==> "1/2 + 3/4"
-    //        
-    // The function should return the result of the fraction after it has been calculated
-    //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
@@ -31,16 +27,7 @@ public class FracCalc {
         Fraction operand1 = new Fraction(splitEqua[0]);
         Fraction operand2 = new Fraction(splitEqua[2]);
         Fraction answer = new Fraction();
-        operand1.printFields();
-        operand2.printFields();
         answer = answer.doMath(operator, operand1, operand2);
-        answer.negativeChecker();
-        answer.toMixed();
-        answer.printFields();
-        System.out.println("Answer: " + answer.getFracStr());
         return answer.getFracStr();
     }
-
-    // TODO: Fill in the space below with any helper methods that you think you will need
-    
 }

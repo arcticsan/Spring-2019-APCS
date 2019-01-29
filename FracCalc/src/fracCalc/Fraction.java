@@ -37,8 +37,6 @@ public class Fraction {
     	//Determining Sign
     	if (negativeIndex > -1) {
 			sign = -1;
-			System.out.println("Change sign");
-			//numerator = (absValue(Integer.parseInt(op.substring((underscoreIndex + 1), dashIndex))) * -1);
 		}
 		else sign = 1;
     	toImproperFrac(); 
@@ -71,7 +69,8 @@ public class Fraction {
     	}
     	return answer;
     }
-	public void negativeChecker() {
+	//Shift negative sign from denominator to numerator
+	public void negativeShifter() {
   		if ((numerator * denominator) > 0) {
   			numerator = absValue(numerator);
   		}
@@ -122,7 +121,8 @@ public class Fraction {
         else if (operator.equals("-") == true) {
         	answer = reduce(subtract(operand1,operand2));
         }
-		answer.printFields();
+		answer.negativeShifter();
+        answer.toMixed();
 		return (answer);		
 	}
 	public Fraction multiply(Fraction operand1, Fraction operand2) {
