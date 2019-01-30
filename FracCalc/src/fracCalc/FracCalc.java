@@ -23,7 +23,6 @@ public class FracCalc {
         // TODO: Implement this function to produce the solution to the input
     	String[] splitEqua = input.split(" "); 
         String operator = splitEqua[1];
-        System.out.println(Arrays.toString(splitEqua));
         Fraction operand1 = new Fraction(splitEqua[0]);
         Fraction operand2 = new Fraction(splitEqua[2]);
         Fraction answer = new Fraction();
