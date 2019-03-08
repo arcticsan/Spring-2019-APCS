@@ -12,7 +12,7 @@ public class SpreadsheetLocation implements Location
 	private int cols;
 	
 	//Constructor
-	//Converts String Location "B6" to Numerical Location Row 5 & Column 1
+	//Converts String Location to Numerical Location eg. B6 --> Row 5 & Column 1
 	public SpreadsheetLocation(String cellName)
     {
 		cellName = cellName.toLowerCase();
