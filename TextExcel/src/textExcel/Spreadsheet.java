@@ -4,44 +4,64 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-	private int rows;
-	private int cols;
+	private Cell[][] sheet;
+	private int numRows;
+	private int numCols;
 	
 	//CONSTRUCTOR
 	//initializes 2D array of 20rows 12columns
 	public Spreadsheet() {
-		rows = 20;
-		cols = 12;
-		Cell sheet [][] = new Cell [rows][cols];
+		numRows = 20;
+		numCols = 12;
+		sheet = new Cell [numRows][numCols];
+		for (int row = 0; row < numRows; row++) {
+			for(int column = 0; column < numCols; column++) {
+				sheet[row][column] = new EmptyCell();
+			}
+		}
 	}
+	
 	@Override
 	public String processCommand(String command)
 	{
-		Location loca = new SpreadsheetLocation(command);
-		System.out.println("row: " + loca.getRow());
-		System.out.println("Column: " + loca.getCol());
+		//check for clear command
+		if (command.equalsIgnoreCase("clear")) {
+			
+		}
+		else {
+			String[] arr = command.split(" ");
+		
+			//check for clear specific cell
+			if (arr[0].equals("clear")) {
+				Location loca = new SpreadsheetLocation(arr[1]);
+			}
+			//all other commands that edit cell
+			else {
+				Location loca = new SpreadsheetLocation(arr[0]);
+			}
+			
+		//System.out.println("row: " + loca.getRow());
+		//System.out.println("Column: " + loca.getCol());
+		}
 		return "";
 	}
 
 	@Override
 	public int getRows()
 	{
-		// TODO Auto-generated method stub
-		return rows;
+		return numRows;
 	}
 
 	@Override
 	public int getCols()
 	{
-		// TODO Auto-generated method stub
-		return cols;
+		return numCols;
 	}
 
 	@Override
 	public Cell getCell(Location loc)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return (sheet[loc.getRow()][loc.getCol()]);
 	}
 
 	@Override
