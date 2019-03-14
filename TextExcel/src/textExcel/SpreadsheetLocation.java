@@ -21,6 +21,11 @@ public class SpreadsheetLocation implements Location
         char letter = cellName.charAt(0);
         cols = letter - 97;      
     }
+	
+	public SpreadsheetLocation(int r, int c) {
+		row = r;
+		cols = c;
+	}
 
     @Override
     // gets row of this location

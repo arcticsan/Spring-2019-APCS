@@ -24,9 +24,20 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		//check for clear command
-		if (command.equalsIgnoreCase("clear")) {
-			
+		//check for cell inspection
+		if (command.length() <= 3) {
+			return (cellInspect(command));
+		}
+		
+		//check for clear commands
+		else if (command.contains("clear")) {
+			if (command.length() <= 5) { // clear sheet
+				
+			}
+			else { // clear cell
+				return(clearCell(command.substring(6)));
+				
+			}
 		}
 		else {
 			String[] arr = command.split(" ");
@@ -39,6 +50,7 @@ public class Spreadsheet implements Grid
 			else {
 				Location loca = new SpreadsheetLocation(arr[0]);
 			}
+			
 			
 		//System.out.println("row: " + loca.getRow());
 		//System.out.println("Column: " + loca.getCol());
@@ -70,5 +82,18 @@ public class Spreadsheet implements Grid
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//clears cell
+	public String clearCell(String cellLoca) {
+		Location loca = new SpreadsheetLocation(cellLoca);
+		sheet[loca.getRow()][loca.getCol()] = new EmptyCell();
+		return (getCell(loca).fullCellText());
+	}
+	
+	//cell inspection
+	public String cellInspect(String cellLoca) {
+		Location loca = new SpreadsheetLocation(cellLoca);
+		return (getCell(loca).fullCellText());
+	}
+	
 }
