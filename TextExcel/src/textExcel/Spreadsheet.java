@@ -43,11 +43,12 @@ public class Spreadsheet implements Grid
 			if (command.indexOf("\"") != -1) {
 				return assignString(command);
 			}
-			String[] arr = command.split(" ");
-			Location loca = new SpreadsheetLocation(arr[0]);
-			
-			return "Something went wrong";
+			else {
+				String[] arr = command.split(" ");
+				Location loca = new SpreadsheetLocation(arr[0]);
+				return "Something went wrong";
 			}
+		}
 	}
 
 	@Override
