@@ -26,36 +26,28 @@ public class Spreadsheet implements Grid
 	{
 		//check for cell inspection
 		if (command.length() <= 3) {
-			return (cellInspect(command));
+			return cellInspect(command);
 		}
 		
 		//check for clear commands
-		else if (command.contains("clear")) {
+		else if (command.substring(0,5).equalsIgnoreCase("clear")) {
 			if (command.length() <= 5) { // clear sheet
-				
+				return clearSheet();
 			}
 			else { // clear cell
-				return(clearCell(command.substring(6)));
+				return clearCell(command.substring(6));
 				
 			}
 		}
 		else {
+			if (command.indexOf("\"") != -1) {
+				return assignString(command);
+			}
 			String[] arr = command.split(" ");
-		
-			//check for clear specific cell
-			if (arr[0].equals("clear")) {
-				Location loca = new SpreadsheetLocation(arr[1]);
-			}
-			//all other commands that edit cell
-			else {
-				Location loca = new SpreadsheetLocation(arr[0]);
-			}
+			Location loca = new SpreadsheetLocation(arr[0]);
 			
-			
-		//System.out.println("row: " + loca.getRow());
-		//System.out.println("Column: " + loca.getCol());
-		}
-		return "";
+			return "Something went wrong";
+			}
 	}
 
 	@Override
@@ -79,21 +71,58 @@ public class Spreadsheet implements Grid
 	@Override
 	public String getGridText()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String grid = "";
+		String header = "   ";
+		
+		//Header
+		for (int letter = 'A'; letter <= 'L'; letter++) {
+			String column = ("|" + (char) letter + "         ");
+			header = header + column;
+		}
+		header = header + "|";
+		grid = grid + header + "\n";
+		
+		//Grid
+		for (int rowIndex = 0; rowIndex < sheet.length; rowIndex++) {
+			String gridRow = (rowIndex + 1) + " ";
+			if ((rowIndex + 1) <= 9) gridRow = gridRow + " ";
+			for (int colIndex = 0; colIndex < sheet[rowIndex].length; colIndex++) {
+				gridRow = gridRow + "|" + sheet[rowIndex][colIndex].abbreviatedCellText();
+			}
+			gridRow = gridRow + "|\n";
+			grid = grid + gridRow;
+		}
+		return grid;
 	}
 	
-	//clears cell
+	//clears cell & returns grid
 	public String clearCell(String cellLoca) {
 		Location loca = new SpreadsheetLocation(cellLoca);
 		sheet[loca.getRow()][loca.getCol()] = new EmptyCell();
-		return (getCell(loca).fullCellText());
+		return getGridText();
 	}
 	
-	//cell inspection
+	//cell inspection & returns fullvalue
 	public String cellInspect(String cellLoca) {
 		Location loca = new SpreadsheetLocation(cellLoca);
-		return (getCell(loca).fullCellText());
+		return getCell(loca).fullCellText();
 	}
 	
+	//clears sheet & returns grid
+	public String clearSheet() {
+		for (int row = 0; row < numRows; row++) {
+			for(int column = 0; column < numCols; column++) {
+				sheet[row][column] = new EmptyCell();
+			}
+		}
+		return getGridText();
+	}
+	
+	public String assignString(String command) {
+		String cellLoca = command.substring(0, command.indexOf(" "));
+		String text = command.substring((command.indexOf("\"") + 1), command.lastIndexOf("\""));
+		Location loca = new SpreadsheetLocation(cellLoca);
+		sheet[loca.getRow()][loca.getCol()] = new TextCell(text);
+		return getGridText();
+	}
 }
