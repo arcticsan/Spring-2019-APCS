@@ -103,7 +103,7 @@ public class Spreadsheet implements Grid
 		return getGridText();
 	}
 	
-	//cell inspection & returns fullvalue
+	//cell inspection & returns fullCellText
 	public String cellInspect(String cellLoca) {
 		Location loca = new SpreadsheetLocation(cellLoca);
 		return getCell(loca).fullCellText();
@@ -119,6 +119,7 @@ public class Spreadsheet implements Grid
 		return getGridText();
 	}
 	
+	//assigns Text to a TextCell
 	public String assignString(String command) {
 		String cellLoca = command.substring(0, command.indexOf(" "));
 		String text = command.substring((command.indexOf("\"") + 1), command.lastIndexOf("\""));
