@@ -39,13 +39,18 @@ public class Spreadsheet implements Grid
 				
 			}
 		}
+		
+		//all other actions
 		else {
-			if (command.indexOf("\"") != -1) {
+			if (command.indexOf("\"") != -1) { //Check for text assignment
 				return assignString(command);
 			}
 			else {
-				String[] arr = command.split(" ");
+				String[] arr = command.split(" ",3);
 				Location loca = new SpreadsheetLocation(arr[0]);
+				if (checkArr(arr, "(")) sheet[loc.getRow()][loc.getCol()] = new FormulaCell(command);
+				else if (checkArr(arr, "%")) sheet[loc.getRow()][loc.getCol()] = new PercentCell(command);
+				else sheet[loc.getRow()][loc.getCol()] = new ValueCell(command);
 				return "Something went wrong";
 			}
 		}
@@ -126,5 +131,15 @@ public class Spreadsheet implements Grid
 		Location loca = new SpreadsheetLocation(cellLoca);
 		sheet[loca.getRow()][loca.getCol()] = new TextCell(text);
 		return getGridText();
+	}
+	
+	//Traverses array to check existence of certain char - returns a boolean
+	public boolean checkArr(String arr[], String letter) {
+		for(String temp: arr) {
+			if (temp.contentEquals(letter)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
