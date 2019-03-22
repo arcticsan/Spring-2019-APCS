@@ -29,11 +29,11 @@ public class RealCell implements Cell{
 	}
 
 	public String fullCellText() {
-		return getText();
+		return text;
 	}
 	
 	public String abbreviatedCellText() {
-		String gridText = getText() + "              ";
+		String gridText = text + "              ";
 		return gridText.substring(0,10);
 	}
 }

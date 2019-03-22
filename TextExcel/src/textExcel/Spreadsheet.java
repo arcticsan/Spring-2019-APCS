@@ -48,10 +48,19 @@ public class Spreadsheet implements Grid
 			else {
 				String[] arr = command.split(" ",3);
 				Location loca = new SpreadsheetLocation(arr[0]);
-				if (checkArr(arr, "(")) sheet[loc.getRow()][loc.getCol()] = new FormulaCell(command);
-				else if (checkArr(arr, "%")) sheet[loc.getRow()][loc.getCol()] = new PercentCell(command);
-				else sheet[loc.getRow()][loc.getCol()] = new ValueCell(command);
-				return "Something went wrong";
+				if (command.contains("(")) {
+					sheet[loca.getRow()][loca.getCol()] = new FormulaCell(arr[2]);
+					return getGridText();
+				}
+				else if (command.contains("%")) {
+					sheet[loca.getRow()][loca.getCol()] = new PercentCell(arr[2]);
+					return getGridText();
+				}
+				else {
+					sheet[loca.getRow()][loca.getCol()] = new ValueCell(arr[2]);
+					return getGridText();
+				}
+				//return "Something went wrong";
 			}
 		}
 	}
