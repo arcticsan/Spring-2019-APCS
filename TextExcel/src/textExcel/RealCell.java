@@ -9,6 +9,7 @@ public class RealCell implements Cell{
 	//constructor
 	public RealCell(String input) {
 		text = input;
+		System.out.println(text);
 	}
 	
 	public String getText() {
@@ -29,11 +30,13 @@ public class RealCell implements Cell{
 	}
 
 	public String fullCellText() {
-		return text;
+		value = Double.parseDouble(text);
+		return value + "";
 	}
 	
 	public String abbreviatedCellText() {
-		String gridText = text + "              ";
+		value = Double.parseDouble(text);
+		String gridText = value + "              ";
 		return gridText.substring(0,10);
 	}
 }

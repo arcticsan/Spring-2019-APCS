@@ -1,5 +1,7 @@
 package textExcel;
 
+import java.util.Arrays;
+
 // Update this file with your own code.
 
 public class Spreadsheet implements Grid
@@ -47,6 +49,7 @@ public class Spreadsheet implements Grid
 			}
 			else {
 				String[] arr = command.split(" ",3);
+				System.out.print(Arrays.toString(arr));
 				Location loca = new SpreadsheetLocation(arr[0]);
 				if (command.contains("(")) {
 					sheet[loca.getRow()][loca.getCol()] = new FormulaCell(arr[2]);
