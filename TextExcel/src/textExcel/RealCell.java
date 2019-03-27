@@ -1,5 +1,9 @@
 package textExcel;
 
+//@author Bryan Chan
+//@version March 2019
+//SuperClass for all Classes containing double values
+
 public class RealCell implements Cell{
 	
 	//fields

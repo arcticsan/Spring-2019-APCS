@@ -1,5 +1,9 @@
 package textExcel;
 
+//@author Bryan Chan
+//@version March 2019
+//Class for Percents, extends Realcell
+
 public class PercentCell extends RealCell{
 
 	//inherited field:

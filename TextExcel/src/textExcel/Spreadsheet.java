@@ -1,5 +1,9 @@
 package textExcel;
 
+//@author Bryan Chan
+//@version March 2019
+//Class for spreadsheet processing 
+
 import java.util.Arrays;
 
 // Update this file with your own code.
