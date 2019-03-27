@@ -4,7 +4,6 @@ public class RealCell implements Cell{
 	
 	//fields
 	private String text;
-	private double value;
 	
 	//constructor
 	public RealCell(String input) {
@@ -16,27 +15,16 @@ public class RealCell implements Cell{
 		return text;
 	}
 	
-	public void setText(String newText) {
-		text = newText;
-		
-	}
-	
 	public double getDoubleValue() {
-		return value;
+		return Double.parseDouble(text);
 	}
 	
-	public void setDoubleValue(double doubleValue) {
-		value = doubleValue;
-	}
-
 	public String fullCellText() {
-		value = Double.parseDouble(text);
-		return value + "";
+		return Double.parseDouble(text) + "";
 	}
 	
 	public String abbreviatedCellText() {
-		value = Double.parseDouble(text);
-		String gridText = value + "              ";
+		String gridText = Double.parseDouble(text) + "              ";
 		return gridText.substring(0,10);
 	}
 }

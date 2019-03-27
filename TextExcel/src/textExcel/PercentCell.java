@@ -2,28 +2,33 @@ package textExcel;
 
 public class PercentCell extends RealCell{
 
-	//inherited fields
+	//inherited field:
 	//text = will be input with with %
-	//value = true double value of input
 	
-	//Constructor
+	private double decimalValue; //value of input in decimal form
+	
+	//Constructor & Assigns decimalValue ex: 8.93% --> 0.089 
 	public PercentCell(String input) {
 		super(input);
-		adjustDoubleValue(input);
-	}
-	
-	//Re-adjust the decimal to true value ex: 8.93% --> 0.089
-	public void adjustDoubleValue (String input) {
 		String temp = input.substring(0, input.indexOf("%"));
-		setDoubleValue(Double.parseDouble(temp) * .01); 
+		decimalValue = Double.parseDouble(temp) * .01;
 	}
 	
+	//Returns String of truncated percentage value
 	public String abbreviatedCellText() {
-		String gridText = getText() + "          ";
+		String gridText = getText();
+		if (gridText.contains(".")) {
+			gridText = gridText.substring(0,gridText.indexOf(".")) + "%";
+		}
+		gridText = gridText + "          ";
 		return gridText.substring(0,10);
 	}
 	
 	public String fullCellText() {
 		return getDoubleValue() + "";
+	}
+	
+	public double getDoubleValue() {
+		return decimalValue;
 	}
 }

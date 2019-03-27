@@ -2,26 +2,19 @@ package textExcel;
 import java.util.*;
 
 public class ValueCell extends RealCell{
+	
+	private double value;
 
-	//constructor
 	public ValueCell(String input) {
 		super(input);
-		double decimalValue = Double.parseDouble(input);
-		setDoubleValue(decimalValue);
+		value = Double.parseDouble(input);
 	}
 	
-	//Abbreviates text for grid
-	public String abbreviatedCellText() {
-		String gridText = getText() + "              ";
-		return gridText.substring(0,10);
-	}
-
-	//Access fullText for inspection
+	//Inherits & Uses RealCell's abreviatedCellText()
+	
 	public String fullCellText() {
 		return getText();
 	}
 	
-	public double getDoubleValue() {
-		return super.getDoubleValue();
-	}
+	//Inherits & Uses RealCell's getDoubleValue()
 }
