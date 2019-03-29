@@ -1,10 +1,9 @@
 // @author Bryan Chan
 // @versioin 6 March 2019
+// Class for a cell's location 
 
 package textExcel;
 import java.util.*;
-
-//Update this file with your own code.
 
 public class SpreadsheetLocation implements Location
 {
@@ -22,6 +21,8 @@ public class SpreadsheetLocation implements Location
         cols = letter - 97;      
     }
 	
+	//Overload Constructor
+	//Manually assigns row and column
 	public SpreadsheetLocation(int r, int c) {
 		row = r;
 		cols = c;

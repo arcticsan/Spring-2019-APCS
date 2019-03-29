@@ -1,5 +1,9 @@
 package textExcel;
 
+//@author Bryan Chan
+//@version March 2019
+//Class for cells with text
+
 public class TextCell implements Cell {
 	private String text;
 	

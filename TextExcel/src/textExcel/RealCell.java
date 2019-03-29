@@ -12,7 +12,6 @@ public class RealCell implements Cell{
 	//constructor
 	public RealCell(String input) {
 		text = input;
-		System.out.println(text);
 	}
 	
 	public String getText() {

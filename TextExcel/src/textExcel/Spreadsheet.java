@@ -52,7 +52,7 @@ public class Spreadsheet implements Grid
 				return assignString(command);
 			}
 			else {
-				String[] arr = command.split(" ",3);
+				String[] arr = command.split(" ",3); 
 				Location loca = new SpreadsheetLocation(arr[0]);
 				if (command.contains("(")) {
 					sheet[loca.getRow()][loca.getCol()] = new FormulaCell(arr[2]);
@@ -90,6 +90,7 @@ public class Spreadsheet implements Grid
 	}
 
 	@Override
+	//Returns the grid as a single string
 	public String getGridText()
 	{
 		String grid = "";
