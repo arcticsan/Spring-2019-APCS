@@ -6,18 +6,21 @@ package textExcel;
 
 public class FormulaCell extends RealCell {
 	
-	//inherited field
-	//text = formula with parenthesis 
+	//fields 
+	//text = formula with parenthesis (inherited)
+	//Spreadsheet sheet;
 
 	//constructor
 	public FormulaCell(String input) {
 		super(input);
+		//sheet = sheetRef;
 	}
 	
 	public String abbreviatedCellText() {
 		String gridText = getDoubleValue() + "              ";
 		return gridText.substring(0,10);
 	}
+
 	
 	public String fullCellText() {
 		return getText();
